@@ -1,5 +1,0 @@
-{
-  "images" : [ { "idiom" : "universal", "filename" : "squirrel_glyph.png" } ],
-  "info" : { "author" : "xcode", "version" : 1 },
-  "properties" : { "template-rendering-intent" : "template" }
-}

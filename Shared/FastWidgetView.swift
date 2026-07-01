@@ -28,9 +28,8 @@ struct FastWidgetView: View {
     }
     private var tint: Color { fasting ? .orange : .green }
 
-    /// The squirrel silhouette as a tintable template glyph (replaces the old SF symbols).
     private func glyph(_ size: CGFloat) -> some View {
-        Image("squirrel_glyph").renderingMode(.template)
+        Image(systemName: "moon.zzz.fill")
             .resizable().scaledToFit().frame(width: size, height: size)
     }
 

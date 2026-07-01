@@ -13,7 +13,7 @@ struct LiveLockScreenView: View {
     var body: some View {
         VStack(spacing: 8) {
             HStack {
-                Image("squirrel_glyph").renderingMode(.template)
+                Image(systemName: "moon.zzz.fill")
                     .resizable().scaledToFit().frame(width: 18, height: 18)
                     .foregroundStyle(tint)
                 Text(fasting ? "断食中" : "进食中")
