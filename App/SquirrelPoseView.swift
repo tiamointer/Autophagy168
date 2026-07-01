@@ -13,6 +13,7 @@ struct SquirrelPoseView: View {
     let stage: CGFloat       // 舞台边长(正方形)
     let time: Double         // 连续时间(秒)
     let intensity: Double    // 呼吸强度
+    var style: MascotStyle = .classic
 
     var body: some View {
         let b = phase.breath(at: time, intensity: intensity)
@@ -34,7 +35,7 @@ struct SquirrelPoseView: View {
 
     // 资源目录里的矢量 PDF(已勾选 Preserve Vector Data,任意放大不糊)。
     private var poseImage: some View {
-        Image(phase.asset)
+        Image(phase.asset(style: style))
             .resizable()
             .interpolation(.high)
             .scaledToFit()

@@ -24,6 +24,18 @@ enum LoopStage: Int, CaseIterable, Identifiable {
         }
     }
 
+    /// 资源名,按选中的松鼠皮肤(经典/矢量)分流;经典皮肤沿用 `asset`。
+    func asset(style: MascotStyle) -> String {
+        guard style == .vector else { return asset }
+        switch self {
+        case .feeding:   return "squirrel-vec-feed"
+        case .satiated:  return "squirrel-vec-full"
+        case .digesting: return "squirrel-vec-digest"
+        case .autophagy: return "squirrel-vec-sleep"
+        case .waking:    return "squirrel-vec-wake"
+        }
+    }
+
     var cn:   String { ["进食", "饱足", "消化", "自噬", "苏醒"][rawValue] }
     var en:   String { ["FEEDING", "SATIATED", "DIGESTING", "AUTOPHAGY", "WAKING"][rawValue] }
     var desc: String { ["摄入能量", "能量充盈", "静息代谢", "自我更新", "重启循环"][rawValue] }

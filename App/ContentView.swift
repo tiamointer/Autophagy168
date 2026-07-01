@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var vm = FastingViewModel()
     @State private var now = Date()
+    @State private var mascotStyle: MascotStyle = MascotStyle.load()
     @State private var showSettings = false
     @State private var showStats = false
     @State private var showConfirm = false
@@ -23,7 +24,7 @@ struct ContentView: View {
 
             VStack(spacing: 30) {
                 header(fasting: fasting)
-                MascotView(display: d, now: now)
+                MascotView(display: d, now: now, style: mascotStyle)
                 actionButton(d: d)
                 recap
                 Spacer()
@@ -37,8 +38,9 @@ struct ContentView: View {
         .onReceive(tick) { now = $0; vm.tick() }
         .onChange(of: scenePhase) { _, p in if p == .active { vm.tick() } }
         .sheet(isPresented: $showSettings) {
-            ScheduleSheet(schedule: vm.schedule) { vm.setSchedule($0) }
-                .presentationDetents([.height(280)])
+            ScheduleSheet(schedule: vm.schedule, onPick: { vm.setSchedule($0) },
+                          mascotStyle: mascotStyle, onPickStyle: { mascotStyle = $0; $0.save() })
+                .presentationDetents([.height(380)])
         }
         .sheet(isPresented: $showStats) { StatsView() }
         .alert(confirmTitle(d), isPresented: $showConfirm) {
@@ -148,6 +150,8 @@ struct ContentView: View {
 struct ScheduleSheet: View {
     let schedule: Schedule
     let onPick: (Schedule) -> Void
+    let mascotStyle: MascotStyle
+    let onPickStyle: (MascotStyle) -> Void
     @Environment(\.dismiss) private var dismiss
 
     // (fastHours, eatHours) — must sum to 24
@@ -181,6 +185,28 @@ struct ScheduleSheet: View {
                     .buttonStyle(.plain)
                 }
             }
+
+            Text("松鼠皮肤")
+                .font(.headline)
+            HStack(spacing: 12) {
+                ForEach(MascotStyle.allCases, id: \.self) { s in
+                    let selected = mascotStyle == s
+                    Button {
+                        onPickStyle(s)
+                    } label: {
+                        Text(s.label)
+                            .font(.subheadline.weight(.semibold))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(selected ? Color.orange.opacity(0.18) : Color.primary.opacity(0.05),
+                                        in: RoundedRectangle(cornerRadius: 14))
+                            .overlay(RoundedRectangle(cornerRadius: 14)
+                                .stroke(selected ? Color.orange : .clear, lineWidth: 2))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
             Spacer()
         }
         .padding(24)

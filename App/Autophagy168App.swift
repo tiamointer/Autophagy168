@@ -31,7 +31,7 @@ struct Autophagy168App: App {
             } else if args.contains("-statsView") {
                 StatsView()
             } else if args.contains("-settingsView") {
-                ScheduleSheet(schedule: .default) { _ in }
+                ScheduleSheet(schedule: .default, onPick: { _ in }, mascotStyle: .classic, onPickStyle: { _ in })
             } else {
                 ContentView()
             }

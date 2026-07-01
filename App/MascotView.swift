@@ -7,6 +7,9 @@ import SwiftUI
 struct MascotView: View {
     let display: DisplayState
     let now: Date
+    var style: MascotStyle = .classic
+
+    @State private var stageEnteredAt: Double = 0
 
     private var progress: Double {
         let total = display.end.timeIntervalSince(display.start)
@@ -47,6 +50,19 @@ struct MascotView: View {
 
     private let box: CGFloat = 300
 
+    // Squash-and-rebound pulse that masks the pose swap on a stage change —
+    // ported from the vector skin's squash-loop technique (see 松鼠循环动画
+    // handoff), retimed to fire once per real stage transition instead of a
+    // free-running clock. Classic style stays a plain crossfade (returns 1,1).
+    private func squash(elapsed: Double) -> (CGFloat, CGFloat) {
+        guard style == .vector, elapsed >= 0, elapsed < 0.42 else { return (1, 1) }
+        func smooth(_ x: Double) -> Double { let c = max(0, min(1, x)); return c * c * (3 - 2 * c) }
+        let u = elapsed / 0.42
+        let sq = smooth(1 - u)
+        let reb = abs(u - 0.55) < 0.35 ? smooth(1 - abs(u - 0.55) / 0.35) : 0
+        return (CGFloat(1 + 0.16 * sq - 0.05 * reb), CGFloat(1 - 0.24 * sq + 0.08 * reb))
+    }
+
     var body: some View {
         VStack(spacing: 12) {
             Text(caption)
@@ -66,14 +82,16 @@ struct MascotView: View {
                 // content doesn't stack-align, which flings the pose outside the ring.
                 TimelineView(.animation) { tl in
                     let t = tl.date.timeIntervalSinceReferenceDate
+                    let (sx, sy) = squash(elapsed: t - stageEnteredAt)
                     ZStack {
                         ForEach(LoopStage.allCases) { p in
-                            SquirrelPoseView(phase: p, stage: box * 320 / 460, time: t, intensity: 1)
+                            SquirrelPoseView(phase: p, stage: box * 320 / 460, time: t, intensity: 1, style: style)
                                 .opacity(p == stage ? 1 : 0)
-                                .animation(.easeInOut(duration: 0.6), value: stage)
+                                .animation(.easeInOut(duration: style == .vector ? 0.16 : 0.6), value: stage)
                         }
                     }
                     .frame(width: box, height: box)
+                    .scaleEffect(x: sx, y: sy, anchor: UnitPoint(x: LoopStage.targetCenter, y: LoopStage.targetFeet))
                 }
 
                 // Per-stage particles in front of the squirrel: waking → gold stars,
@@ -81,6 +99,7 @@ struct MascotView: View {
                 LoopStageFX(stage: stage, box: box)
             }
             .frame(width: box, height: box)
+            .onChange(of: stage) { _, _ in stageEnteredAt = Date().timeIntervalSinceReferenceDate }
 
             Text(remaining > 0 ? hms(remaining) : "已达成 🎉")
                 .font(.system(size: 30, weight: .bold, design: .rounded))

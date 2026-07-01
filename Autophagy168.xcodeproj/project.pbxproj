@@ -36,6 +36,7 @@
 		889BDE4314D678B212FA3D2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658ED3D2DEAD8CC1BCA31E19 /* Assets.xcassets */; };
 		8EF859A76C779B7EA6166259 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AEF56864B9FF49833E84D0 /* SharedStore.swift */; };
 		934347BDBF98BCC001B2ACE9 /* MetabolicFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */; };
+		A1130F6FBE570308D5282003 /* MascotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */; };
 		A2BD2AC8D93EEB2AF03E57E1 /* FastingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC7845D606872771DF53C0 /* FastingState.swift */; };
 		A471E152C1664AE7E7D09A5D /* LiveLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */; };
 		A637E2F5883483216DD932EB /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */; };
@@ -48,6 +49,7 @@
 		B9DAEB27FA24CDEE589EF947 /* Autophagy168App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */; };
 		C45B11B1CC3135954235B6A2 /* FastIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FF1B9E449616321E286136 /* FastIntents.swift */; };
 		C46434AC413B575D7F82E21A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B10A8D9513ECBD5A5B4196 /* StatsView.swift */; };
+		D1F36BE83D840C0681A5C6D3 /* MascotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */; };
 		D2E2AFC2955733B85F00F556 /* FastActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */; };
 		D3C77F19674B3C2062AA7B82 /* FastWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DAF7B1481744F47013ED1 /* FastWidgetView.swift */; };
 		D6D321C4F46279A087AF17BD /* FastControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D1B1B7DECFC13D187056D /* FastControl.swift */; };
@@ -93,6 +95,7 @@
 		17AEF56864B9FF49833E84D0 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
 		19F1169E632BEAB45E443643 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		217E8DCDD406EC4B698519A7 /* FastingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingEngine.swift; sourceTree = "<group>"; };
+		23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotStyle.swift; sourceTree = "<group>"; };
 		29C6959646F22428C8B0FF06 /* FastShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastShortcuts.swift; sourceTree = "<group>"; };
 		2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityController.swift; sourceTree = "<group>"; };
 		383B7EF51B3076D56019AE42 /* WidgetGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGallery.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */,
 				2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */,
 				FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */,
+				23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */,
 				BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */,
 				19F1169E632BEAB45E443643 /* Schedule.swift */,
 				17AEF56864B9FF49833E84D0 /* SharedStore.swift */,
@@ -330,6 +334,7 @@
 				037705A28C0D020181BE0907 /* IntentToggle.swift in Sources */,
 				A637E2F5883483216DD932EB /* LiveActivityController.swift in Sources */,
 				A471E152C1664AE7E7D09A5D /* LiveLockScreenView.swift in Sources */,
+				D1F36BE83D840C0681A5C6D3 /* MascotStyle.swift in Sources */,
 				934347BDBF98BCC001B2ACE9 /* MetabolicFX.swift in Sources */,
 				F8997456FF7ED9E19DC34C6B /* Schedule.swift in Sources */,
 				8EF859A76C779B7EA6166259 /* SharedStore.swift in Sources */,
@@ -361,6 +366,7 @@
 				F7C4D05B359539A547BF0C97 /* LiveLockScreenView.swift in Sources */,
 				0CCC9F53AD67BEC004BCD0CA /* LoopStage.swift in Sources */,
 				4EB30714EB347C386D346F5C /* LoopStageFX.swift in Sources */,
+				A1130F6FBE570308D5282003 /* MascotStyle.swift in Sources */,
 				B75E78F218353DEBE6FC7AB7 /* MascotView.swift in Sources */,
 				18953D03C0822DE0B00C0837 /* MetabolicFX.swift in Sources */,
 				B103C5E47D197C75FE298CC5 /* SampleData.swift in Sources */,
