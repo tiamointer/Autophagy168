@@ -20,6 +20,19 @@ iOS · SwiftUI · SwiftData · WidgetKit · Live Activity · App Intents · iOS 
 
 一切数据都在本地（SwiftData + App Group），**无账号、无网络、无追踪**。
 
+## 截图
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/main-classic.png" width="240" /><br/><sub>主屏 · 经典皮肤（自噬阶段）</sub></td>
+    <td align="center"><img src="docs/screenshots/main-vector.png" width="240" /><br/><sub>主屏 · 矢量皮肤（同一阶段）</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/settings.png" width="240" /><br/><sub>设置 · 节律 + 松鼠皮肤切换</sub></td>
+    <td align="center"><img src="docs/screenshots/stats.png" width="240" /><br/><sub>统计 · 连胜 / 柱状图 / 热力图</sub></td>
+  </tr>
+</table>
+
 ## 特性
 
 - 🐿️ **会代谢的松鼠**：5 个代谢阶段随真实进度演进，配进度环 + 每阶段专属粒子特效
