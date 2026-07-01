@@ -17,6 +17,8 @@ struct Autophagy168App: App {
         if args.contains("-seedDigest") { SampleData.seedActiveFast(into: container, hoursAgo: 4) }   // ~0.25 → 消化期
         if args.contains("-seedAutophagy") { SampleData.seedActiveFast(into: container, hoursAgo: 15) } // ~0.94 → 自噬期
         if args.contains("-seedEating") { SampleData.seedEating(into: container, endedHoursAgo: 1) }
+        if args.contains("-mascotVector") { MascotStyle.vector.save() }
+        if args.contains("-mascotClassic") { MascotStyle.classic.save() }
         #endif
         if !uiTest {
             Task { await FastNotifier.requestAuth() }
