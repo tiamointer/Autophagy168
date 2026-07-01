@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 512 512"
+     width="512"
+     height="512"
+     role="img"
+     aria-labelledby="title description"
+     overflow="hidden">
+  <title id="title">六状态循环松鼠</title>
+  <desc id="description">松鼠依次进食、休息、期待、舔嘴、静心与欢呼，每三秒切换一次。</desc>
+
+  <style>
+    .state {
+      opacity: 0;
+      transform-box: view-box;
+      transform-origin: 256px 256px;
+      animation: morph-state 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation-delay: calc(var(--state) * 4s - 800ms);
+    }
+
+    @keyframes morph-state {
+      0% {
+        opacity: 0;
+        transform: translateY(4px) scale(1.025);
+        filter: blur(5px);
+      }
+      3.333333% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+      8.333333% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.006);
+        filter: blur(0);
+      }
+      13.333333%, 16.666667% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+      20%, 100% {
+        opacity: 0;
+        transform: translateY(-4px) scale(1.025);
+        filter: blur(5px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .state { animation: none; opacity: 0; }
+      #eating { opacity: 1; }
+    }
+
+  </style>
+
+  <defs>
+    <image id="states-sheet"
+           href="squirrel_states_reference.png"
+           xlink:href="squirrel_states_reference.png"
+           width="1536"
+           height="1024"
+           preserveAspectRatio="none"/>
+  </defs>
+
+  <g id="eating" class="state" style="--state: 0">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="0" y="0"/>
+  </g>
+  <g id="belly" class="state" style="--state: 1">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="-512" y="0"/>
+  </g>
+  <g id="expecting" class="state" style="--state: 2">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="-1024" y="0"/>
+  </g>
+  <g id="licking" class="state" style="--state: 3">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="0" y="-512"/>
+  </g>
+  <g id="meditating" class="state" style="--state: 4">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="-512" y="-512"/>
+  </g>
+  <g id="celebrating" class="state" style="--state: 5">
+    <use href="#states-sheet" xlink:href="#states-sheet" x="-1024" y="-512"/>
+  </g>
+</svg>

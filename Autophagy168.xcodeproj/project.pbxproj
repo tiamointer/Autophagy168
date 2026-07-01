@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		037705A28C0D020181BE0907 /* IntentToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */; };
+		0CCC9F53AD67BEC004BCD0CA /* LoopStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFE30D39E0645646A7E752 /* LoopStage.swift */; };
+		0CDA145CFDB8FC8601F87482 /* FastStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54381760EC111B59277ACCBC /* FastStatusWidget.swift */; };
+		18953D03C0822DE0B00C0837 /* MetabolicFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */; };
+		1D4167E6D2196A7C17081A97 /* FastIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FF1B9E449616321E286136 /* FastIntents.swift */; };
+		21837E631B4670DC7A674338 /* IntentToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */; };
+		2449906DC9ECBABE0DF039E8 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5284DCF814B185A93002AEDD /* AppGroup.swift */; };
+		2B719CF9D22FF4E37BA64349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91813763A5431A22E6C5FD6 /* Assets.xcassets */; };
+		2DDEC2D1EBA0F4DDF2375248 /* FastWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DAF7B1481744F47013ED1 /* FastWidgetView.swift */; };
+		376BAE849D749E3DF8CDA160 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090446ED2E40844DADC6E3C4 /* Fonts.swift */; };
+		37A269017359C50BA3A002D7 /* SelfCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2E8C1056094211B345FCA /* SelfCheck.swift */; };
+		3B6F59D1A8B9AB490C895599 /* FastNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09DE2160D166CD68A745D2 /* FastNotifier.swift */; };
+		3C13DFC500BC62118BA1DC68 /* FastLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399BDC41D08BCD5E73346C39 /* FastLiveActivity.swift */; };
+		3C2D0441BD30ED527144AE13 /* AutophagyRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBB4C4703A34EAADE3113B4 /* AutophagyRing.swift */; };
+		3F9BAA4BFCB525018E364AA8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED38DF9695C30B9740DA3BC /* ContentView.swift */; };
+		3FA96344695B21DB47AA7CC0 /* FastActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */; };
+		4128EF372D186061B7004DF0 /* StatsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EC51B3DD1B2BEC093CF57 /* StatsEngine.swift */; };
+		459FD5C19AA4DA15C876821F /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5284DCF814B185A93002AEDD /* AppGroup.swift */; };
+		4704F616B81144C4D6FAB379 /* FastSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3800DCFAD6581799AF415C /* FastSession.swift */; };
+		4EB30714EB347C386D346F5C /* LoopStageFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0083DD4D64E7486EA5519 /* LoopStageFX.swift */; };
+		551F50285A7157E42B8E68CE /* WidgetGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383B7EF51B3076D56019AE42 /* WidgetGallery.swift */; };
+		562288AB263B9C289F930955 /* StatsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EC51B3DD1B2BEC093CF57 /* StatsEngine.swift */; };
+		598988B81FCB1CA2BD721B96 /* Autophagy168Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F36913F321C4A41397BC033A /* Autophagy168Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		599B9C750A55EFC3FCE5D30F /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AEF56864B9FF49833E84D0 /* SharedStore.swift */; };
+		6E7AF1F54567E5F68F96699F /* FastingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8DCDD406EC4B698519A7 /* FastingEngine.swift */; };
+		86FB05ACD4C46C8CD03A432B /* FastSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3800DCFAD6581799AF415C /* FastSession.swift */; };
+		889BDE4314D678B212FA3D2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658ED3D2DEAD8CC1BCA31E19 /* Assets.xcassets */; };
+		8EF859A76C779B7EA6166259 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AEF56864B9FF49833E84D0 /* SharedStore.swift */; };
+		934347BDBF98BCC001B2ACE9 /* MetabolicFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */; };
+		A2BD2AC8D93EEB2AF03E57E1 /* FastingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC7845D606872771DF53C0 /* FastingState.swift */; };
+		A471E152C1664AE7E7D09A5D /* LiveLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */; };
+		A637E2F5883483216DD932EB /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */; };
+		A8ECE4881ABB686FCF74337E /* FastingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8DCDD406EC4B698519A7 /* FastingEngine.swift */; };
+		AE7DD7C8BABED017154222AD /* FastingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC7845D606872771DF53C0 /* FastingState.swift */; };
+		AF253268E78D6BC5F843C716 /* FastShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6959646F22428C8B0FF06 /* FastShortcuts.swift */; };
+		B0C22D78CC82F2A803313C89 /* FastingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F577C052DD4458EC493278CE /* FastingViewModel.swift */; };
+		B103C5E47D197C75FE298CC5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720F4031A43372C1A5E2401 /* SampleData.swift */; };
+		B75E78F218353DEBE6FC7AB7 /* MascotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D521E66615C9AC78FC652F1E /* MascotView.swift */; };
+		B9DAEB27FA24CDEE589EF947 /* Autophagy168App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */; };
+		C45B11B1CC3135954235B6A2 /* FastIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FF1B9E449616321E286136 /* FastIntents.swift */; };
+		C46434AC413B575D7F82E21A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B10A8D9513ECBD5A5B4196 /* StatsView.swift */; };
+		D2E2AFC2955733B85F00F556 /* FastActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */; };
+		D3C77F19674B3C2062AA7B82 /* FastWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31DAF7B1481744F47013ED1 /* FastWidgetView.swift */; };
+		D6D321C4F46279A087AF17BD /* FastControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D1B1B7DECFC13D187056D /* FastControl.swift */; };
+		DF9A9C39C819783DDB07128F /* FastNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09DE2160D166CD68A745D2 /* FastNotifier.swift */; };
+		E69106A954BBF26080E8EBE3 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F1169E632BEAB45E443643 /* Schedule.swift */; };
+		EA6121DDDFB43AEA324C979D /* SquirrelPoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0568F3FBD1DA21C45AEC1236 /* SquirrelPoseView.swift */; };
+		F1AC172DEFF90C36C83B3F7C /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */; };
+		F7C4D05B359539A547BF0C97 /* LiveLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */; };
+		F8997456FF7ED9E19DC34C6B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F1169E632BEAB45E443643 /* Schedule.swift */; };
+		FBB06FFC141556502782C5A0 /* Autophagy168WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C356BCA5FC1625E19D751 /* Autophagy168WidgetBundle.swift */; };
+		FC3FADF9B5871A36A07574D2 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39457AD91F23B2542A90616D /* ColorUtils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF03C69CC2726D9BAD9626CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7764A672E19048B3B5E0EE3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 699C17DE897863AF01CCA4A6;
+			remoteInfo = Autophagy168Widgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D0B7B7DFFE6AC3FB86525C07 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				598988B81FCB1CA2BD721B96 /* Autophagy168Widgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0568F3FBD1DA21C45AEC1236 /* SquirrelPoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquirrelPoseView.swift; sourceTree = "<group>"; };
+		090446ED2E40844DADC6E3C4 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastActivityAttributes.swift; sourceTree = "<group>"; };
+		166C356BCA5FC1625E19D751 /* Autophagy168WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autophagy168WidgetBundle.swift; sourceTree = "<group>"; };
+		17AEF56864B9FF49833E84D0 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		19F1169E632BEAB45E443643 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		217E8DCDD406EC4B698519A7 /* FastingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingEngine.swift; sourceTree = "<group>"; };
+		29C6959646F22428C8B0FF06 /* FastShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastShortcuts.swift; sourceTree = "<group>"; };
+		2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityController.swift; sourceTree = "<group>"; };
+		383B7EF51B3076D56019AE42 /* WidgetGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGallery.swift; sourceTree = "<group>"; };
+		39457AD91F23B2542A90616D /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		399BDC41D08BCD5E73346C39 /* FastLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastLiveActivity.swift; sourceTree = "<group>"; };
+		39B10A8D9513ECBD5A5B4196 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		3F6854EED84D3B557EE4304A /* Autophagy168.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autophagy168.entitlements; sourceTree = "<group>"; };
+		4D1EC51B3DD1B2BEC093CF57 /* StatsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEngine.swift; sourceTree = "<group>"; };
+		5284DCF814B185A93002AEDD /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		53E2E8C1056094211B345FCA /* SelfCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfCheck.swift; sourceTree = "<group>"; };
+		54381760EC111B59277ACCBC /* FastStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastStatusWidget.swift; sourceTree = "<group>"; };
+		658ED3D2DEAD8CC1BCA31E19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AFFE30D39E0645646A7E752 /* LoopStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopStage.swift; sourceTree = "<group>"; };
+		6ED38DF9695C30B9740DA3BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autophagy168App.swift; sourceTree = "<group>"; };
+		8E3800DCFAD6581799AF415C /* FastSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastSession.swift; sourceTree = "<group>"; };
+		9FC3F0BA42484FCF6FDBD0F6 /* Autophagy168.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Autophagy168.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A720F4031A43372C1A5E2401 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		AE09DE2160D166CD68A745D2 /* FastNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastNotifier.swift; sourceTree = "<group>"; };
+		AEDC7845D606872771DF53C0 /* FastingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingState.swift; sourceTree = "<group>"; };
+		B32A3660ED0DEBB73557DFD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B6F0083DD4D64E7486EA5519 /* LoopStageFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopStageFX.swift; sourceTree = "<group>"; };
+		BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentToggle.swift; sourceTree = "<group>"; };
+		BDBB4C4703A34EAADE3113B4 /* AutophagyRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutophagyRing.swift; sourceTree = "<group>"; };
+		BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetabolicFX.swift; sourceTree = "<group>"; };
+		C91813763A5431A22E6C5FD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1FF1B9E449616321E286136 /* FastIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastIntents.swift; sourceTree = "<group>"; };
+		D521E66615C9AC78FC652F1E /* MascotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotView.swift; sourceTree = "<group>"; };
+		E12D1B1B7DECFC13D187056D /* FastControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastControl.swift; sourceTree = "<group>"; };
+		E31DAF7B1481744F47013ED1 /* FastWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastWidgetView.swift; sourceTree = "<group>"; };
+		ED7A35CD27CD114AF12ADB11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F36913F321C4A41397BC033A /* Autophagy168Widgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = Autophagy168Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C39A96780ECFF4889DB1AF /* Autophagy168Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autophagy168Widgets.entitlements; sourceTree = "<group>"; };
+		F577C052DD4458EC493278CE /* FastingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingViewModel.swift; sourceTree = "<group>"; };
+		FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveLockScreenView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1700F73939DB7DCFCBD012AC = {
+			isa = PBXGroup;
+			children = (
+				F9B652CD334B469A9A8760AE /* App */,
+				A581FA7CFD9A9459E7E587AF /* Shared */,
+				2F242711B1FEDE2E0A8182D5 /* Widgets */,
+				2BF59B94B83BCFD8FF8BAD8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BF59B94B83BCFD8FF8BAD8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FC3F0BA42484FCF6FDBD0F6 /* Autophagy168.app */,
+				F36913F321C4A41397BC033A /* Autophagy168Widgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F242711B1FEDE2E0A8182D5 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				658ED3D2DEAD8CC1BCA31E19 /* Assets.xcassets */,
+				166C356BCA5FC1625E19D751 /* Autophagy168WidgetBundle.swift */,
+				F4C39A96780ECFF4889DB1AF /* Autophagy168Widgets.entitlements */,
+				E12D1B1B7DECFC13D187056D /* FastControl.swift */,
+				399BDC41D08BCD5E73346C39 /* FastLiveActivity.swift */,
+				54381760EC111B59277ACCBC /* FastStatusWidget.swift */,
+				B32A3660ED0DEBB73557DFD3 /* Info.plist */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		A581FA7CFD9A9459E7E587AF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5284DCF814B185A93002AEDD /* AppGroup.swift */,
+				1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */,
+				217E8DCDD406EC4B698519A7 /* FastingEngine.swift */,
+				AEDC7845D606872771DF53C0 /* FastingState.swift */,
+				D1FF1B9E449616321E286136 /* FastIntents.swift */,
+				AE09DE2160D166CD68A745D2 /* FastNotifier.swift */,
+				8E3800DCFAD6581799AF415C /* FastSession.swift */,
+				E31DAF7B1481744F47013ED1 /* FastWidgetView.swift */,
+				BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */,
+				2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */,
+				FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */,
+				BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */,
+				19F1169E632BEAB45E443643 /* Schedule.swift */,
+				17AEF56864B9FF49833E84D0 /* SharedStore.swift */,
+				4D1EC51B3DD1B2BEC093CF57 /* StatsEngine.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F9B652CD334B469A9A8760AE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C91813763A5431A22E6C5FD6 /* Assets.xcassets */,
+				3F6854EED84D3B557EE4304A /* Autophagy168.entitlements */,
+				6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */,
+				BDBB4C4703A34EAADE3113B4 /* AutophagyRing.swift */,
+				39457AD91F23B2542A90616D /* ColorUtils.swift */,
+				6ED38DF9695C30B9740DA3BC /* ContentView.swift */,
+				F577C052DD4458EC493278CE /* FastingViewModel.swift */,
+				29C6959646F22428C8B0FF06 /* FastShortcuts.swift */,
+				090446ED2E40844DADC6E3C4 /* Fonts.swift */,
+				ED7A35CD27CD114AF12ADB11 /* Info.plist */,
+				6AFFE30D39E0645646A7E752 /* LoopStage.swift */,
+				B6F0083DD4D64E7486EA5519 /* LoopStageFX.swift */,
+				D521E66615C9AC78FC652F1E /* MascotView.swift */,
+				A720F4031A43372C1A5E2401 /* SampleData.swift */,
+				53E2E8C1056094211B345FCA /* SelfCheck.swift */,
+				0568F3FBD1DA21C45AEC1236 /* SquirrelPoseView.swift */,
+				39B10A8D9513ECBD5A5B4196 /* StatsView.swift */,
+				383B7EF51B3076D56019AE42 /* WidgetGallery.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C2CCFC95989373F22A129C6 /* Autophagy168 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3C92ECAD03F26879964E9F3 /* Build configuration list for PBXNativeTarget "Autophagy168" */;
+			buildPhases = (
+				C8BDE0E8F7225E65E8533939 /* Sources */,
+				EDE7C1C3E54703A85421E579 /* Resources */,
+				D0B7B7DFFE6AC3FB86525C07 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				494C0ED41E1B11B900B70E4D /* PBXTargetDependency */,
+			);
+			name = Autophagy168;
+			packageProductDependencies = (
+			);
+			productName = Autophagy168;
+			productReference = 9FC3F0BA42484FCF6FDBD0F6 /* Autophagy168.app */;
+			productType = "com.apple.product-type.application";
+		};
+		699C17DE897863AF01CCA4A6 /* Autophagy168Widgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27B38377DC471CC761F2285A /* Build configuration list for PBXNativeTarget "Autophagy168Widgets" */;
+			buildPhases = (
+				ABC7E81AA6A9042EA0C75DDD /* Sources */,
+				7EE7C8E6A835888892B4606F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Autophagy168Widgets;
+			packageProductDependencies = (
+			);
+			productName = Autophagy168Widgets;
+			productReference = F36913F321C4A41397BC033A /* Autophagy168Widgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7764A672E19048B3B5E0EE3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2C2CCFC95989373F22A129C6 = {
+						DevelopmentTeam = PXYRA7322P;
+						ProvisioningStyle = Automatic;
+					};
+					699C17DE897863AF01CCA4A6 = {
+						DevelopmentTeam = PXYRA7322P;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8D58BDDE9C1F49A5256BB4DC /* Build configuration list for PBXProject "Autophagy168" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1700F73939DB7DCFCBD012AC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2BF59B94B83BCFD8FF8BAD8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C2CCFC95989373F22A129C6 /* Autophagy168 */,
+				699C17DE897863AF01CCA4A6 /* Autophagy168Widgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7EE7C8E6A835888892B4606F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889BDE4314D678B212FA3D2E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDE7C1C3E54703A85421E579 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B719CF9D22FF4E37BA64349 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABC7E81AA6A9042EA0C75DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				459FD5C19AA4DA15C876821F /* AppGroup.swift in Sources */,
+				FBB06FFC141556502782C5A0 /* Autophagy168WidgetBundle.swift in Sources */,
+				3FA96344695B21DB47AA7CC0 /* FastActivityAttributes.swift in Sources */,
+				D6D321C4F46279A087AF17BD /* FastControl.swift in Sources */,
+				C45B11B1CC3135954235B6A2 /* FastIntents.swift in Sources */,
+				3C13DFC500BC62118BA1DC68 /* FastLiveActivity.swift in Sources */,
+				DF9A9C39C819783DDB07128F /* FastNotifier.swift in Sources */,
+				86FB05ACD4C46C8CD03A432B /* FastSession.swift in Sources */,
+				0CDA145CFDB8FC8601F87482 /* FastStatusWidget.swift in Sources */,
+				D3C77F19674B3C2062AA7B82 /* FastWidgetView.swift in Sources */,
+				A8ECE4881ABB686FCF74337E /* FastingEngine.swift in Sources */,
+				A2BD2AC8D93EEB2AF03E57E1 /* FastingState.swift in Sources */,
+				037705A28C0D020181BE0907 /* IntentToggle.swift in Sources */,
+				A637E2F5883483216DD932EB /* LiveActivityController.swift in Sources */,
+				A471E152C1664AE7E7D09A5D /* LiveLockScreenView.swift in Sources */,
+				934347BDBF98BCC001B2ACE9 /* MetabolicFX.swift in Sources */,
+				F8997456FF7ED9E19DC34C6B /* Schedule.swift in Sources */,
+				8EF859A76C779B7EA6166259 /* SharedStore.swift in Sources */,
+				562288AB263B9C289F930955 /* StatsEngine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8BDE0E8F7225E65E8533939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2449906DC9ECBABE0DF039E8 /* AppGroup.swift in Sources */,
+				B9DAEB27FA24CDEE589EF947 /* Autophagy168App.swift in Sources */,
+				3C2D0441BD30ED527144AE13 /* AutophagyRing.swift in Sources */,
+				FC3FADF9B5871A36A07574D2 /* ColorUtils.swift in Sources */,
+				3F9BAA4BFCB525018E364AA8 /* ContentView.swift in Sources */,
+				D2E2AFC2955733B85F00F556 /* FastActivityAttributes.swift in Sources */,
+				1D4167E6D2196A7C17081A97 /* FastIntents.swift in Sources */,
+				3B6F59D1A8B9AB490C895599 /* FastNotifier.swift in Sources */,
+				4704F616B81144C4D6FAB379 /* FastSession.swift in Sources */,
+				AF253268E78D6BC5F843C716 /* FastShortcuts.swift in Sources */,
+				2DDEC2D1EBA0F4DDF2375248 /* FastWidgetView.swift in Sources */,
+				6E7AF1F54567E5F68F96699F /* FastingEngine.swift in Sources */,
+				AE7DD7C8BABED017154222AD /* FastingState.swift in Sources */,
+				B0C22D78CC82F2A803313C89 /* FastingViewModel.swift in Sources */,
+				376BAE849D749E3DF8CDA160 /* Fonts.swift in Sources */,
+				21837E631B4670DC7A674338 /* IntentToggle.swift in Sources */,
+				F1AC172DEFF90C36C83B3F7C /* LiveActivityController.swift in Sources */,
+				F7C4D05B359539A547BF0C97 /* LiveLockScreenView.swift in Sources */,
+				0CCC9F53AD67BEC004BCD0CA /* LoopStage.swift in Sources */,
+				4EB30714EB347C386D346F5C /* LoopStageFX.swift in Sources */,
+				B75E78F218353DEBE6FC7AB7 /* MascotView.swift in Sources */,
+				18953D03C0822DE0B00C0837 /* MetabolicFX.swift in Sources */,
+				B103C5E47D197C75FE298CC5 /* SampleData.swift in Sources */,
+				E69106A954BBF26080E8EBE3 /* Schedule.swift in Sources */,
+				37A269017359C50BA3A002D7 /* SelfCheck.swift in Sources */,
+				599B9C750A55EFC3FCE5D30F /* SharedStore.swift in Sources */,
+				EA6121DDDFB43AEA324C979D /* SquirrelPoseView.swift in Sources */,
+				4128EF372D186061B7004DF0 /* StatsEngine.swift in Sources */,
+				C46434AC413B575D7F82E21A /* StatsView.swift in Sources */,
+				551F50285A7157E42B8E68CE /* WidgetGallery.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		494C0ED41E1B11B900B70E4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 699C17DE897863AF01CCA4A6 /* Autophagy168Widgets */;
+			targetProxy = BF03C69CC2726D9BAD9626CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		43EAD4B7DA5F61AAE13B0A7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PXYRA7322P;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AD007E86345759145269AE3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PXYRA7322P;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B386D0565605FB168C23FD2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widgets/Autophagy168Widgets.entitlements;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.Autophagy168.Widgets;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DA1DB4A22F2D22B04128B8BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widgets/Autophagy168Widgets.entitlements;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.Autophagy168.Widgets;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EF97862C0A9C59E0AA0CF249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Autophagy168.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.Autophagy168;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA6EB0D2EF7575BF7BF7E901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Autophagy168.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.Autophagy168;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27B38377DC471CC761F2285A /* Build configuration list for PBXNativeTarget "Autophagy168Widgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA1DB4A22F2D22B04128B8BA /* Debug */,
+				B386D0565605FB168C23FD2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8D58BDDE9C1F49A5256BB4DC /* Build configuration list for PBXProject "Autophagy168" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD007E86345759145269AE3D /* Debug */,
+				43EAD4B7DA5F61AAE13B0A7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B3C92ECAD03F26879964E9F3 /* Build configuration list for PBXNativeTarget "Autophagy168" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF97862C0A9C59E0AA0CF249 /* Debug */,
+				FA6EB0D2EF7575BF7BF7E901 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7764A672E19048B3B5E0EE3C /* Project object */;
+}

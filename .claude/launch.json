@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "squirrel",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "7780", "--directory", "/private/tmp/claude-501/-Users-laike-laike-projects-Autophagy168/e0b8269f-706e-4ed0-b421-f71b7fd1e55c/scratchpad"],
+      "port": 7780
+    }
+  ]
+}

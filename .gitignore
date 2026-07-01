@@ -1,0 +1,13 @@
+build/
+build_device/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+
+# CodeGraph index (regeneratable)
+.codegraph/
+
+# Swift Package Manager
+.swiftpm/
+.build/

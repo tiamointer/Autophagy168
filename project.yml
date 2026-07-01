@@ -1,0 +1,57 @@
+name: Autophagy168
+options:
+  bundleIdPrefix: com.laike
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    MARKETING_VERSION: "0.1"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: PXYRA7322P
+targets:
+  Autophagy168:
+    type: application
+    platform: iOS
+    sources: [Shared, App]
+    dependencies:
+      - target: Autophagy168Widgets
+        embed: true
+    entitlements:
+      path: App/Autophagy168.entitlements
+      properties:
+        com.apple.security.application-groups: ["group.com.laike.Autophagy168"]
+        com.apple.developer.usernotifications.time-sensitive: true
+    info:
+      path: App/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: Autophagy168
+        NSSupportsLiveActivities: true
+        NSUserNotificationsUsageDescription: 用于在断食达成、进食窗口将关时提醒你。
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.laike.Autophagy168
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  Autophagy168Widgets:
+    type: app-extension
+    platform: iOS
+    sources: [Shared, Widgets]
+    entitlements:
+      path: Widgets/Autophagy168Widgets.entitlements
+      properties:
+        com.apple.security.application-groups: ["group.com.laike.Autophagy168"]
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: Autophagy168 Widgets
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.laike.Autophagy168.Widgets
+        TARGETED_DEVICE_FAMILY: "1"
