@@ -28,7 +28,7 @@ targets:
       path: App/Info.plist
       properties:
         UILaunchScreen: {}
-        CFBundleDisplayName: Autophagy168
+        CFBundleDisplayName: 松鼠轻断食
         NSSupportsLiveActivities: true
         NSUserNotificationsUsageDescription: 用于在断食达成、进食窗口将关时提醒你。
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
@@ -48,7 +48,7 @@ targets:
     info:
       path: Widgets/Info.plist
       properties:
-        CFBundleDisplayName: Autophagy168 Widgets
+        CFBundleDisplayName: 松鼠轻断食小组件
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     settings:
