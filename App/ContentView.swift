@@ -40,7 +40,7 @@ struct ContentView: View {
         .sheet(isPresented: $showSettings) {
             ScheduleSheet(schedule: vm.schedule, onPick: { vm.setSchedule($0) },
                           mascotStyle: mascotStyle, onPickStyle: { mascotStyle = $0; $0.save() })
-                .presentationDetents([.height(380)])
+                .presentationDetents([.height(460)])
         }
         .sheet(isPresented: $showStats) { StatsView() }
         .alert(confirmTitle(d), isPresented: $showConfirm) {
@@ -194,14 +194,22 @@ struct ScheduleSheet: View {
                     Button {
                         onPickStyle(s)
                     } label: {
-                        Text(s.label)
-                            .font(.subheadline.weight(.semibold))
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                            .background(selected ? Color.orange.opacity(0.18) : Color.primary.opacity(0.05),
-                                        in: RoundedRectangle(cornerRadius: 14))
-                            .overlay(RoundedRectangle(cornerRadius: 14)
-                                .stroke(selected ? Color.orange : .clear, lineWidth: 2))
+                        VStack(spacing: 8) {
+                            Text(s.label)
+                                .font(.subheadline.weight(.semibold))
+                            // Same pose (feeding) in both styles, so the thumbnail compares
+                            // art style, not pose.
+                            Image(LoopStage.feeding.asset(style: s))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 64)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(selected ? Color.orange.opacity(0.18) : Color.primary.opacity(0.05),
+                                    in: RoundedRectangle(cornerRadius: 14))
+                        .overlay(RoundedRectangle(cornerRadius: 14)
+                            .stroke(selected ? Color.orange : .clear, lineWidth: 2))
                     }
                     .buttonStyle(.plain)
                 }
