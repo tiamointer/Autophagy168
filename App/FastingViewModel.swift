@@ -6,9 +6,13 @@ import WidgetKit
 @Observable
 final class FastingViewModel {
     var schedule = Schedule.load()
+    var energy = BonusEnergy.load()   // settable so SelfCheck can reset it
     private(set) var display = DisplayState.placeholder
     private(set) var completedCount = 0
     private(set) var lastDuration: TimeInterval?
+    private(set) var availableOrbs = 0
+    private(set) var collectedThisSession = 0
+    var showCheatMealEarned = false
 
     /// Off during self-check so the test path doesn't write snapshots / schedule notifications / reload widgets.
     var sideEffectsEnabled = true
@@ -27,6 +31,13 @@ final class FastingViewModel {
     func toggle() {
         guard let ctx = context else { return }
         if let active = fetchActive() {
+            // Settle uncollected orbs BEFORE ending, so no earned energy is lost.
+            let leftover = BonusEnergy.orbsAvailable(goalDate: active.goalDate,
+                                                     collected: active.bonusCollected, now: Date())
+            if leftover > 0 {
+                active.bonusCollected += leftover
+                addEnergy(leftover)
+            }
             active.end = Date()
         } else {
             ctx.insert(FastSession(start: Date(), targetHours: Double(schedule.fastDurationHours)))
@@ -41,6 +52,45 @@ final class FastingViewModel {
         refresh(now: Date(), force: true)
     }
 
+    // MARK: - Bonus energy
+
+    /// Collect one floating orb: credit the session and the balance.
+    func collectOrb() {
+        guard let ctx = context, let active = fetchActive(),
+              BonusEnergy.orbsAvailable(goalDate: active.goalDate,
+                                        collected: active.bonusCollected, now: Date()) > 0 else { return }
+        active.bonusCollected += 1
+        addEnergy(1)
+        try? ctx.save()
+        refresh(now: Date(), force: false)
+    }
+
+    /// Spend `threshold` points on a cheat meal. Balance never goes negative.
+    func redeemCheatMeal() {
+        guard energy.canRedeem else { return }
+        energy.balance -= energy.threshold
+        persistEnergy()
+    }
+
+    func setEnergyThreshold(_ n: Int) {
+        energy.threshold = min(max(n, BonusEnergy.thresholdRange.lowerBound),
+                               BonusEnergy.thresholdRange.upperBound)
+        persistEnergy()
+    }
+
+    /// Celebrate only when an INCREASE crosses the threshold — editing the threshold
+    /// or sitting above it never re-fires the alert.
+    private func addEnergy(_ n: Int) {
+        let was = energy.canRedeem
+        energy.balance += n
+        if !was && energy.canRedeem { showCheatMealEarned = true }
+        persistEnergy()
+    }
+
+    private func persistEnergy() {
+        if sideEffectsEnabled { energy.save() }
+    }
+
     // MARK: - Core
 
     private func refresh(now: Date, force: Bool) {
@@ -49,6 +99,13 @@ final class FastingViewModel {
 
         let disp = currentDisplay(sessions: all, schedule: schedule, now: now)
         display = disp
+
+        // Orb counts are pure derivations — recomputed every tick, restart-safe.
+        let active = all.first { $0.isActive }
+        availableOrbs = active.map {
+            BonusEnergy.orbsAvailable(goalDate: $0.goalDate, collected: $0.bonusCollected, now: now)
+        } ?? 0
+        collectedThisSession = active?.bonusCollected ?? 0
 
         completedCount = all.filter { $0.completed }.count
         lastDuration = all.filter { !$0.isActive }

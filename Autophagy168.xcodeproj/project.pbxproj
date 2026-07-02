@@ -32,11 +32,13 @@
 		598988B81FCB1CA2BD721B96 /* Autophagy168Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F36913F321C4A41397BC033A /* Autophagy168Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		599B9C750A55EFC3FCE5D30F /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AEF56864B9FF49833E84D0 /* SharedStore.swift */; };
 		6E7AF1F54567E5F68F96699F /* FastingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8DCDD406EC4B698519A7 /* FastingEngine.swift */; };
+		77BCCA5313AFA3665ABAFEC3 /* BonusEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B4D0600DC70B23BD84250 /* BonusEnergy.swift */; };
 		86FB05ACD4C46C8CD03A432B /* FastSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3800DCFAD6581799AF415C /* FastSession.swift */; };
 		889BDE4314D678B212FA3D2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658ED3D2DEAD8CC1BCA31E19 /* Assets.xcassets */; };
 		8EF859A76C779B7EA6166259 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AEF56864B9FF49833E84D0 /* SharedStore.swift */; };
 		934347BDBF98BCC001B2ACE9 /* MetabolicFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */; };
 		A1130F6FBE570308D5282003 /* MascotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */; };
+		A155F7781841C71FDA9136D0 /* BonusOrbField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6441A4CBBFBA540B0AA969D /* BonusOrbField.swift */; };
 		A2BD2AC8D93EEB2AF03E57E1 /* FastingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDC7845D606872771DF53C0 /* FastingState.swift */; };
 		A471E152C1664AE7E7D09A5D /* LiveLockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB875EDCACD0C363A8563A9B /* LiveLockScreenView.swift */; };
 		A637E2F5883483216DD932EB /* LiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA5E694ACA60F6C97899D3 /* LiveActivityController.swift */; };
@@ -47,6 +49,7 @@
 		B103C5E47D197C75FE298CC5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720F4031A43372C1A5E2401 /* SampleData.swift */; };
 		B75E78F218353DEBE6FC7AB7 /* MascotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D521E66615C9AC78FC652F1E /* MascotView.swift */; };
 		B9DAEB27FA24CDEE589EF947 /* Autophagy168App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */; };
+		C1137D3035D3D6682A91FD70 /* BonusEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B4D0600DC70B23BD84250 /* BonusEnergy.swift */; };
 		C45B11B1CC3135954235B6A2 /* FastIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FF1B9E449616321E286136 /* FastIntents.swift */; };
 		C46434AC413B575D7F82E21A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B10A8D9513ECBD5A5B4196 /* StatsView.swift */; };
 		D1F36BE83D840C0681A5C6D3 /* MascotStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */; };
@@ -93,6 +96,7 @@
 		1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastActivityAttributes.swift; sourceTree = "<group>"; };
 		166C356BCA5FC1625E19D751 /* Autophagy168WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autophagy168WidgetBundle.swift; sourceTree = "<group>"; };
 		17AEF56864B9FF49833E84D0 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		190B4D0600DC70B23BD84250 /* BonusEnergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusEnergy.swift; sourceTree = "<group>"; };
 		19F1169E632BEAB45E443643 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		217E8DCDD406EC4B698519A7 /* FastingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingEngine.swift; sourceTree = "<group>"; };
 		23DCFBC75BB36C93EBCB6C2F /* MascotStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotStyle.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		BAEB7BBF6F561178E1D3B90A /* IntentToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentToggle.swift; sourceTree = "<group>"; };
 		BDBB4C4703A34EAADE3113B4 /* AutophagyRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutophagyRing.swift; sourceTree = "<group>"; };
 		BF4C54ABFB9AEADDFD89A752 /* MetabolicFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetabolicFX.swift; sourceTree = "<group>"; };
+		C6441A4CBBFBA540B0AA969D /* BonusOrbField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusOrbField.swift; sourceTree = "<group>"; };
 		C91813763A5431A22E6C5FD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1FF1B9E449616321E286136 /* FastIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastIntents.swift; sourceTree = "<group>"; };
 		D521E66615C9AC78FC652F1E /* MascotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotView.swift; sourceTree = "<group>"; };
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				5284DCF814B185A93002AEDD /* AppGroup.swift */,
+				190B4D0600DC70B23BD84250 /* BonusEnergy.swift */,
 				1459F05B821E6B00B05228DC /* FastActivityAttributes.swift */,
 				217E8DCDD406EC4B698519A7 /* FastingEngine.swift */,
 				AEDC7845D606872771DF53C0 /* FastingState.swift */,
@@ -197,6 +203,7 @@
 				3F6854EED84D3B557EE4304A /* Autophagy168.entitlements */,
 				6FAA954AA7D0F865BCDBCABD /* Autophagy168App.swift */,
 				BDBB4C4703A34EAADE3113B4 /* AutophagyRing.swift */,
+				C6441A4CBBFBA540B0AA969D /* BonusOrbField.swift */,
 				39457AD91F23B2542A90616D /* ColorUtils.swift */,
 				6ED38DF9695C30B9740DA3BC /* ContentView.swift */,
 				F577C052DD4458EC493278CE /* FastingViewModel.swift */,
@@ -321,6 +328,7 @@
 			files = (
 				459FD5C19AA4DA15C876821F /* AppGroup.swift in Sources */,
 				FBB06FFC141556502782C5A0 /* Autophagy168WidgetBundle.swift in Sources */,
+				77BCCA5313AFA3665ABAFEC3 /* BonusEnergy.swift in Sources */,
 				3FA96344695B21DB47AA7CC0 /* FastActivityAttributes.swift in Sources */,
 				D6D321C4F46279A087AF17BD /* FastControl.swift in Sources */,
 				C45B11B1CC3135954235B6A2 /* FastIntents.swift in Sources */,
@@ -349,6 +357,8 @@
 				2449906DC9ECBABE0DF039E8 /* AppGroup.swift in Sources */,
 				B9DAEB27FA24CDEE589EF947 /* Autophagy168App.swift in Sources */,
 				3C2D0441BD30ED527144AE13 /* AutophagyRing.swift in Sources */,
+				C1137D3035D3D6682A91FD70 /* BonusEnergy.swift in Sources */,
+				A155F7781841C71FDA9136D0 /* BonusOrbField.swift in Sources */,
 				FC3FADF9B5871A36A07574D2 /* ColorUtils.swift in Sources */,
 				3F9BAA4BFCB525018E364AA8 /* ContentView.swift in Sources */,
 				D2E2AFC2955733B85F00F556 /* FastActivityAttributes.swift in Sources */,

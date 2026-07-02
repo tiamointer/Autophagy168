@@ -14,6 +14,8 @@ enum SelfCheck {
         eatingAnchor()
         viewModelToggle()
         stats()
+        bonus()
+        bonusFlow()
         // intentToggle() is async (the intent API now awaits the Live Activity update); run it
         // detached with side effects off so it never touches the user's real notifications.
         Task { await intentToggle(); print("[SelfCheck] all passed") }
@@ -105,6 +107,67 @@ enum SelfCheck {
         let cnt = (try? container.mainContext.fetch(
             FetchDescriptor<FastSession>(predicate: #Predicate { $0.end == nil })))?.count ?? 0
         assert(cnt == 1, "set(fasting:true) should leave exactly one running fast, got \(cnt)")
+    }
+
+    /// Orb math edges + threshold clamping + persistence round-trip.
+    private static func bonus() {
+        let goal = Date(timeIntervalSinceReferenceDate: 800_000_000)
+        func at(_ m: Double) -> Date { goal.addingTimeInterval(m * 60) }
+        assert(BonusEnergy.orbsEarned(goalDate: goal, now: at(-1)) == 0, "before goal → 0 orbs")
+        assert(BonusEnergy.orbsEarned(goalDate: goal, now: goal) == 0, "at goal → 0 orbs")
+        assert(BonusEnergy.orbsEarned(goalDate: goal, now: at(29.99)) == 0, "goal+29m59s → 0 orbs")
+        assert(BonusEnergy.orbsEarned(goalDate: goal, now: at(30)) == 1, "goal+30m → 1 orb")
+        assert(BonusEnergy.orbsEarned(goalDate: goal, now: at(75)) == 2, "goal+75m → 2 orbs")
+        assert(BonusEnergy.orbsAvailable(goalDate: goal, collected: 1, now: at(75)) == 1)
+        assert(BonusEnergy.orbsAvailable(goalDate: goal, collected: 5, now: at(30)) == 0,
+               "over-collected (clock rollback) must clamp to 0, never negative")
+
+        // persistence round-trip, restoring whatever was there
+        let saved = BonusEnergy.load()
+        BonusEnergy(balance: 7, threshold: 25).save()
+        assert(BonusEnergy.load() == BonusEnergy(balance: 7, threshold: 25), "energy must persist")
+        BonusEnergy(balance: 3, threshold: 999).save()
+        assert(BonusEnergy.load().threshold == BonusEnergy.thresholdRange.upperBound, "threshold clamps on load")
+        saved.save()
+    }
+
+    /// Collect → settle-on-end → threshold crossing → redeem, all through the vm
+    /// with side effects off so the user's real balance is never touched.
+    private static func bonusFlow() {
+        let container = try! ModelContainer(
+            for: FastSession.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        let vm = FastingViewModel()
+        vm.sideEffectsEnabled = false
+        vm.energy = .default
+
+        // Fast started 16h + 61.7min ago → 2 orbs ripe.
+        container.mainContext.insert(
+            FastSession(start: .now.addingTimeInterval(-(16 * 3600 + 61.7 * 60)), targetHours: 16))
+        vm.bind(container.mainContext)
+        assert(vm.availableOrbs == 2, "16h+61.7m overtime → 2 orbs, got \(vm.availableOrbs)")
+
+        vm.collectOrb()
+        assert(vm.energy.balance == 1 && vm.availableOrbs == 1 && vm.collectedThisSession == 1,
+               "collect: balance 1 / available 1 / collected 1")
+
+        vm.toggle() // end fast → leftover orb auto-settles
+        assert(vm.energy.balance == 2, "settle on end: balance should be 2, got \(vm.energy.balance)")
+        assert(vm.availableOrbs == 0 && !vm.display.hasRunningFast, "ended fast → no orbs")
+
+        // Threshold crossing fires exactly on the increase that crosses.
+        vm.energy = BonusEnergy(balance: 9, threshold: 10)
+        vm.showCheatMealEarned = false
+        container.mainContext.insert(
+            FastSession(start: .now.addingTimeInterval(-(16 * 3600 + 31 * 60)), targetHours: 16))
+        vm.tick()
+        vm.collectOrb()
+        assert(vm.energy.canRedeem && vm.showCheatMealEarned, "crossing 9→10 must celebrate")
+
+        vm.redeemCheatMeal()
+        assert(vm.energy.balance == 0, "redeem subtracts threshold")
+        vm.redeemCheatMeal()
+        assert(vm.energy.balance == 0, "redeem below threshold is a no-op, never negative")
     }
 
     private static func stats() {

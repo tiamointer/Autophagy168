@@ -123,7 +123,7 @@ xcodebuild build -scheme Autophagy168 \
 
 改动 target/entitlements/bundle id 请改 `project.yml` 后重跑 `xcodegen generate`，别直接编辑 `.xcodeproj`。
 
-**开发脚手架**：DEBUG 构建启动时跑 `SelfCheck`——校验断食状态机、节律持久化、会话完成、通知排程、进食窗口锚定、统计计算等核心逻辑（app 能起来即全部通过）。另有调试启动参数用于直达各种 UI 状态：`-seedHistory` `-seedActiveFast` `-seedDigest` `-seedAutophagy` `-seedEating` `-widgetGallery` `-statsView` `-settingsView`。
+**开发脚手架**：DEBUG 构建启动时跑 `SelfCheck`——校验断食状态机、节律持久化、会话完成、通知排程、进食窗口锚定、统计计算等核心逻辑（app 能起来即全部通过）。另有调试启动参数用于直达各种 UI 状态：`-seedHistory` `-seedActiveFast` `-seedDigest` `-seedAutophagy` `-seedOvertime` `-seedEating` `-widgetGallery` `-statsView` `-settingsView`。
 
 ## 隐私
 

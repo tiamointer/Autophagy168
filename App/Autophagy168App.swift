@@ -16,6 +16,7 @@ struct Autophagy168App: App {
         if args.contains("-seedActiveFast") { SampleData.seedActiveFast(into: container, hoursAgo: 10) }
         if args.contains("-seedDigest") { SampleData.seedActiveFast(into: container, hoursAgo: 4) }   // ~0.25 → 消化期
         if args.contains("-seedAutophagy") { SampleData.seedActiveFast(into: container, hoursAgo: 15) } // ~0.94 → 自噬期
+        if args.contains("-seedOvertime") { SampleData.seedActiveFast(into: container, hoursAgo: 17.48) } // 超时 ~1.48h → 2 球在场,第 3 球 ~70s 后长出
         if args.contains("-seedEating") { SampleData.seedEating(into: container, endedHoursAgo: 1) }
         if args.contains("-mascotVector") { MascotStyle.vector.save() }
         if args.contains("-mascotClassic") { MascotStyle.classic.save() }
@@ -33,7 +34,8 @@ struct Autophagy168App: App {
             } else if args.contains("-statsView") {
                 StatsView()
             } else if args.contains("-settingsView") {
-                ScheduleSheet(schedule: .default, onPick: { _ in }, mascotStyle: .classic, onPickStyle: { _ in })
+                ScheduleSheet(schedule: .default, onPick: { _ in }, mascotStyle: .classic, onPickStyle: { _ in },
+                              energyThreshold: 10, onPickThreshold: { _ in })
             } else {
                 ContentView()
             }

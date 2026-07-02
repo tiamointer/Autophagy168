@@ -9,12 +9,15 @@ final class FastSession {
     var start: Date
     var end: Date?
     var targetHours: Double
+    // Declaration default is load-bearing: SwiftData backfills existing rows from it.
+    var bonusCollected: Int = 0
 
-    init(start: Date = .now, end: Date? = nil, targetHours: Double = 16) {
+    init(start: Date = .now, end: Date? = nil, targetHours: Double = 16, bonusCollected: Int = 0) {
         self.id = UUID()
         self.start = start
         self.end = end
         self.targetHours = targetHours
+        self.bonusCollected = bonusCollected
     }
 
     var isActive: Bool { end == nil }

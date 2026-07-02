@@ -8,6 +8,9 @@ struct MascotView: View {
     let display: DisplayState
     let now: Date
     var style: MascotStyle = .classic
+    var bonusOrbs: Int = 0
+    var bonusCollected: Int = 0
+    var onCollectOrb: (() -> Void)? = nil
 
     @State private var stageEnteredAt: Double = 0
 
@@ -97,6 +100,12 @@ struct MascotView: View {
                 // Per-stage particles in front of the squirrel: waking → gold stars,
                 // autophagy → white healing motes. Other stages draw nothing.
                 LoopStageFX(stage: stage, box: box)
+
+                // Topmost so taps win — every layer below is gesture-free.
+                if display.hasRunningFast, let onCollectOrb {
+                    BonusOrbField(collected: bonusCollected, available: bonusOrbs,
+                                  box: box, onCollect: onCollectOrb)
+                }
             }
             .frame(width: box, height: box)
             .onChange(of: stage) { _, _ in stageEnteredAt = Date().timeIntervalSinceReferenceDate }

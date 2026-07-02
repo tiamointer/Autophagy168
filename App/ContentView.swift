@@ -10,6 +10,7 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var showStats = false
     @State private var showConfirm = false
+    @State private var showRedeemConfirm = false
 
     private let tick = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -24,7 +25,9 @@ struct ContentView: View {
 
             VStack(spacing: 30) {
                 header(fasting: fasting)
-                MascotView(display: d, now: now, style: mascotStyle)
+                MascotView(display: d, now: now, style: mascotStyle,
+                           bonusOrbs: vm.availableOrbs, bonusCollected: vm.collectedThisSession,
+                           onCollectOrb: { vm.collectOrb() })
                 actionButton(d: d)
                 recap
                 Spacer()
@@ -39,8 +42,10 @@ struct ContentView: View {
         .onChange(of: scenePhase) { _, p in if p == .active { vm.tick() } }
         .sheet(isPresented: $showSettings) {
             ScheduleSheet(schedule: vm.schedule, onPick: { vm.setSchedule($0) },
-                          mascotStyle: mascotStyle, onPickStyle: { mascotStyle = $0; $0.save() })
-                .presentationDetents([.height(460)])
+                          mascotStyle: mascotStyle, onPickStyle: { mascotStyle = $0; $0.save() },
+                          energyThreshold: vm.energy.threshold,
+                          onPickThreshold: { vm.setEnergyThreshold($0) })
+                .presentationDetents([.height(580)])
         }
         .sheet(isPresented: $showStats) { StatsView() }
         .alert(confirmTitle(d), isPresented: $showConfirm) {
@@ -48,6 +53,18 @@ struct ContentView: View {
             Button("再等等", role: .cancel) { }
         } message: {
             Text(confirmMessage(d))
+        }
+        .alert("能量满啦 ✨", isPresented: Bindable(vm).showCheatMealEarned) {
+            Button("马上兑换") { vm.redeemCheatMeal() }
+            Button("先存着", role: .cancel) { }
+        } message: {
+            Text("自噬能量攒够 \(vm.energy.threshold) 点，可以兑换一顿放纵餐了。")
+        }
+        .alert("兑换放纵餐？", isPresented: $showRedeemConfirm) {
+            Button("兑换") { vm.redeemCheatMeal() }
+            Button("再等等", role: .cancel) { }
+        } message: {
+            Text("将消耗 \(vm.energy.threshold) 点能量，好好享受这一顿。")
         }
     }
 
@@ -101,7 +118,28 @@ struct ContentView: View {
         HStack(spacing: 12) {
             stat(value: "\(vm.completedCount)", label: "达标次数")
             stat(value: vm.lastDuration.map(hShort) ?? "—", label: "上次时长")
+            energyStat
         }
+    }
+
+    /// 自噬能量卡：达到阈值后翻成橙色「可兑换」态，点击兑换。
+    private var energyStat: some View {
+        let redeemable = vm.energy.canRedeem
+        return VStack(spacing: 4) {
+            Text("\(vm.energy.balance)").font(.title3.weight(.semibold)).monospacedDigit()
+            Text(redeemable ? "可兑换放纵餐" : "自噬能量")
+                .font(.caption)
+                .foregroundStyle(redeemable ? Color.orange : Color.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 14)
+        .background(redeemable ? Color.orange.opacity(0.18) : Color.primary.opacity(0.04),
+                    in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous)
+            .stroke(redeemable ? Color.orange : .clear, lineWidth: 2))
+        .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .onTapGesture { if redeemable { showRedeemConfirm = true } }
+        .animation(.easeInOut(duration: 0.3), value: redeemable)
     }
 
     private func stat(value: String, label: String) -> some View {
@@ -152,6 +190,8 @@ struct ScheduleSheet: View {
     let onPick: (Schedule) -> Void
     let mascotStyle: MascotStyle
     let onPickStyle: (MascotStyle) -> Void
+    let energyThreshold: Int
+    let onPickThreshold: (Int) -> Void
     @Environment(\.dismiss) private var dismiss
 
     // (fastHours, eatHours) — must sum to 24
@@ -215,9 +255,37 @@ struct ScheduleSheet: View {
                 }
             }
 
+            Text("放纵餐")
+                .font(.headline)
+            Text("每攒 \(energyThreshold) 点自噬能量，奖励自己一顿")
+                .font(.footnote).foregroundStyle(.secondary)
+            HStack(spacing: 12) {
+                thresholdButton("minus", enabled: energyThreshold > BonusEnergy.thresholdRange.lowerBound) {
+                    onPickThreshold(energyThreshold - 5)
+                }
+                Text("\(energyThreshold) 点")
+                    .font(.title3.weight(.bold)).monospacedDigit()
+                    .frame(maxWidth: .infinity)
+                thresholdButton("plus", enabled: energyThreshold < BonusEnergy.thresholdRange.upperBound) {
+                    onPickThreshold(energyThreshold + 5)
+                }
+            }
+
             Spacer()
         }
         .padding(24)
+    }
+
+    private func thresholdButton(_ symbol: String, enabled: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.headline)
+                .frame(width: 64, height: 44)
+                .background(Color.primary.opacity(0.05), in: RoundedRectangle(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
+        .disabled(!enabled)
+        .opacity(enabled ? 1 : 0.35)
     }
 }
 
