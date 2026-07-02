@@ -35,9 +35,19 @@ struct MascotView: View {
         }
     }
     private var stage: LoopStage { resolved.stage }
-    /// Arc fraction so the sweep lands on the active node: one fifth per stage.
+
+    /// 从当前窗口反推进食/断食划分(两者恒和 24h),环的节点与弧速随节律自适应,
+    /// 用户中途改节律也与本窗口自洽。
+    private var eatHours: Double {
+        let windowH = display.end.timeIntervalSince(display.start) / 3600
+        return fasting ? 24 - windowH : windowH
+    }
+    private var nodeFractions: [Double] { LoopStage.cycleFractions(eatHours: eatHours) }
+    /// 弧 = 循环内已过时间的比例——匀速、弧长与时间严格成正比;
+    /// 因节点也按时间摆放,弧到节点的时刻仍然正好是阶段切换时刻。
     private var ringProgress: Double {
-        (Double(stage.rawValue) + min(max(resolved.frac, 0), 1)) / 5
+        let f = min(max(progress, 0), 1)
+        return fasting ? (eatHours + f * (24 - eatHours)) / 24 : f * eatHours / 24
     }
 
     // Keep the app's richer metabolic caption (its own voice) over the stage.
@@ -79,7 +89,8 @@ struct MascotView: View {
                 AutophagyRing(progress: min(ringProgress, 1),
                               activeIndex: stage.rawValue,
                               arcColor: stage.color,
-                              box: box)
+                              box: box,
+                              nodeFractions: nodeFractions)
                 // Continuous clock drives the breathing; opacity cross-fades the pose on stage change.
                 // ForEach needs an explicit ZStack to centre — a bare ForEach as TimelineView's
                 // content doesn't stack-align, which flings the pose outside the ring.

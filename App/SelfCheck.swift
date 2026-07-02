@@ -16,6 +16,7 @@ enum SelfCheck {
         stats()
         bonus()
         bonusFlow()
+        ringGeometry()
         // intentToggle() is async (the intent API now awaits the Live Activity update); run it
         // detached with side effects off so it never touches the user's real notifications.
         Task { await intentToggle(); print("[SelfCheck] all passed") }
@@ -168,6 +169,21 @@ enum SelfCheck {
         assert(vm.energy.balance == 0, "redeem subtracts threshold")
         vm.redeemCheatMeal()
         assert(vm.energy.balance == 0, "redeem below threshold is a no-op, never negative")
+    }
+
+    /// Ring nodes sit at each stage's real start time — arc length ∝ time.
+    private static func ringGeometry() {
+        let f = LoopStage.cycleFractions(eatHours: 8)   // 16:8
+        assert(f.count == 5 && f[0] == 0, "cycle starts at feeding, top of ring")
+        assert(abs(f[1] - 8.0 / 24) < 1e-9, "satiated node at eat end (1/3)")
+        assert(abs(f[2] - 9.92 / 24) < 1e-9, "digesting at eat + 12% of fast")
+        assert(abs(f[3] - 16.0 / 24) < 1e-9, "autophagy at eat + 50% of fast")
+        assert(abs(f[4] - 22.4 / 24) < 1e-9, "waking at eat + 90% of fast")
+        for hours in [4.0, 6.0, 8.0] {   // all schedule options stay strictly increasing, < 1
+            let g = LoopStage.cycleFractions(eatHours: hours)
+            assert(zip(g, g.dropFirst()).allSatisfy { $0 < $1 } && g.last! < 1,
+                   "fractions must be strictly increasing for eat=\(hours)h")
+        }
     }
 
     private static func stats() {

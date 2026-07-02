@@ -36,11 +36,12 @@ iOS · SwiftUI · SwiftData · WidgetKit · Live Activity · App Intents · iOS 
 ## 特性
 
 - 🐿️ **会代谢的松鼠**：5 个代谢阶段随真实进度演进，配进度环 + 每阶段专属粒子特效
+- ⚡ **自噬能量球（超时奖励）**：断食超过目标后每 30 分钟长出一颗可收集的金色能量球，攒够阈值可兑换一顿放纵餐；忘了点也不亏——结束断食时自动结算
 - 🎨 **两套松鼠皮肤**：经典 / 矢量，设置里一键切换，带缩略图预览
 - ⏱️ **一键切换断食/进食**：循环锚定你的点击，不绑死钟点；未达标提前切换会二次确认
-- 📊 **节律可选**：16:8 / 18:6 / 20:4
+- 📊 **节律可选**：16:8 / 18:6 / 20:4；放纵餐阈值 5–50 点可调
 - 📈 **统计面板**：当前/最长连续天数、周完成率、30 天柱状图、5 周热力图
-- 🔒 **锁屏 & 灵动岛 Live Activity**：实时倒计时 + 进度，随阶段更新
+- 🔒 **锁屏 & 灵动岛 Live Activity**：实时倒计时 + 进度，图标与配色随断食/进食相位切换
 - 🎛️ **控制中心 & Siri**：一键切换断食状态，无需打开 app（App Intents / Action Button / Spotlight）
 - 🔔 **贴心提醒**：断食达成、进食窗口将关（提前 1h）、进食窗口结束——均为 time-sensitive 本地通知
 - 🧩 **桌面小组件**：四种尺寸（圆形/矩形/内联/小号）
@@ -57,7 +58,11 @@ iOS · SwiftUI · SwiftData · WidgetKit · Live Activity · App Intents · iOS 
 | 🌙 自噬 `autophagy` | 50–90% | 深度燃脂、自噬启动 | 蜷睡 + 白色治愈粒子 ✨ |
 | 🌅 苏醒 `waking` | 90–100% | 重启循环 | 伸懒腰 + 金色星星 |
 
-进度环的弧线会扫向当前阶段的节点，文案随阶段切换。
+进度环按**真实时间**绘制：五个节点摆在各阶段实际开始的时刻（角度 = 时刻 ÷ 24h × 360°，随所选节律自适应），弧匀速行进、**弧长与时间严格成正比**——弧扫到节点的瞬间正好是阶段切换的时刻。文案随阶段切换。
+
+### 超时了？长能量球 ⚡
+
+断食冲过目标线后，松鼠身边每 30 分钟悬浮出一颗金色 +1 能量球（同屏最多 8 颗，多的排队），点击收集进「自噬能量」余额；没来得及点的在结束断食时自动入账。余额攒到阈值（默认 10 点，设置里 5–50 可调）会弹「能量满啦」——可立即或稍后手动兑换一顿**放纵餐**，兑换扣掉阈值点数，剩下的继续攒。球数是纯派生值（超时时长 ÷ 30min − 已收集），杀掉 app 重开分毫不差。
 
 ## 两套皮肤 · 经典 vs 矢量
 
@@ -66,7 +71,7 @@ iOS · SwiftUI · SwiftData · WidgetKit · Live Activity · App Intents · iOS 
 - **经典**：app 原生的松鼠画风，阶段间做 0.6s 透明度交叉淡入。
 - **矢量**：一套独立的矢量松鼠，换姿势时叠加一段 **squash & stretch 挤压回弹**（0.42s，横向 +16% / 纵向 −24% 再过冲回弹）——用形变运动盖住换姿势那一下，读起来像「蹲下弹起」。
 
-两套都是 PDF 矢量资产（Preserve Vector Data），任意放大不糊。Live Activity 与桌面组件用系统 SF Symbol（`moon.zzz.fill` / `flame.fill` / `fork.knife`），保证锁屏与灵动岛上一眼可辨。
+两套都是 PDF 矢量资产（Preserve Vector Data），任意放大不糊。Live Activity 与桌面组件用系统 SF Symbol 并**随相位切换**：断食 `moon.zzz.fill`（橙）、进食 `fork.knife`（绿），锁屏与灵动岛上一眼可辨当前状态。相位判定基于你实际点按的时刻（进行中的会话 → 断食；否则锚定上次结束时刻 + 进食时长），到点不自动翻——下一步永远由你亲手点。
 
 ## 架构
 
@@ -76,17 +81,19 @@ iOS · SwiftUI · SwiftData · WidgetKit · Live Activity · App Intents · iOS 
 App/       主 app target —— SwiftUI 视图 + ViewModel
 ├─ Autophagy168App.swift   @main 入口；SwiftData 容器；调试启动参数
 ├─ ContentView.swift        主屏（切换按钮、设置/统计 sheet）
-├─ MascotView.swift         松鼠编排：进度 → 阶段 → 姿势/环/粒子
+├─ MascotView.swift         松鼠编排：进度 → 阶段 → 姿势/环/粒子/能量球
 ├─ SquirrelPoseView.swift   单个姿势 + 呼吸动画（脚部锚点对齐）
-├─ LoopStage.swift          5 阶段枚举（资产/配色/锚点/呼吸曲线）
-├─ AutophagyRing.swift      进度环 UI
+├─ LoopStage.swift          5 阶段枚举（资产/配色/锚点/呼吸曲线/时间节点）
+├─ AutophagyRing.swift      进度环 UI（节点按真实时长摆放）
 ├─ LoopStageFX.swift        每阶段程序化粒子（Canvas）
+├─ BonusOrbField.swift      超时能量球图层（可点击收集）
 ├─ StatsView.swift          统计面板
 └─ FastingViewModel.swift   @Observable @MainActor 实时状态
 
 Shared/    app 与组件共享
 ├─ FastingEngine.swift      纯状态机：now + Schedule → 阶段 + 窗口
-├─ FastSession.swift        SwiftData 模型（断食会话）
+├─ FastSession.swift        SwiftData 模型（断食会话 + 已收集球数）
+├─ BonusEnergy.swift        自噬能量（余额/阈值持久化 + 球数纯派生）
 ├─ Schedule.swift           节律（UserDefaults）
 ├─ MascotStyle.swift        皮肤枚举（持久化）
 ├─ SharedStore.swift        App Group 容器 + 快照
@@ -123,7 +130,7 @@ xcodebuild build -scheme Autophagy168 \
 
 改动 target/entitlements/bundle id 请改 `project.yml` 后重跑 `xcodegen generate`，别直接编辑 `.xcodeproj`。
 
-**开发脚手架**：DEBUG 构建启动时跑 `SelfCheck`——校验断食状态机、节律持久化、会话完成、通知排程、进食窗口锚定、统计计算等核心逻辑（app 能起来即全部通过）。另有调试启动参数用于直达各种 UI 状态：`-seedHistory` `-seedActiveFast` `-seedDigest` `-seedAutophagy` `-seedOvertime` `-seedEating` `-widgetGallery` `-statsView` `-settingsView`。
+**开发脚手架**：DEBUG 构建启动时跑 `SelfCheck`——校验断食状态机、节律持久化、会话完成、通知排程、进食窗口锚定、统计计算、能量球数学与收集/结算/兑换流程、进度环时间几何等核心逻辑（app 能起来即全部通过）。另有调试启动参数用于直达各种 UI 状态：`-seedHistory` `-seedActiveFast` `-seedDigest` `-seedAutophagy` `-seedOvertime` `-seedEating` `-widgetGallery` `-statsView` `-settingsView`。
 
 ## 隐私
 
@@ -142,6 +149,7 @@ xcodebuild build -scheme Autophagy168 \
 | `design_refs/` | 设计参考、图标候选留档 |
 | `mascot/` | 松鼠素材生成提示词 |
 | `project.yml` | XcodeGen 工程定义（唯一真相） |
+| `CHANGELOG.md` | 更新说明（按日期记录新增/修复） |
 
 ## 授权
 

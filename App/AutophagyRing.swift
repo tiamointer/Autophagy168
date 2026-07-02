@@ -13,6 +13,9 @@ struct AutophagyRing: View {
     let activeIndex: Int
     let arcColor: Color
     let box: CGFloat          // 容器边长(参照值 460)
+    // 五个节点在环上的比例位置(0..1,顶部起顺时针)。按阶段真实时长摆放,
+    // 弧长与时间严格成正比;弧扫到节点的时刻 = 阶段切换时刻。
+    let nodeFractions: [Double]
 
     private var k: CGFloat { box / 460 }          // 缩放因子
     private var center: CGFloat { box / 2 }
@@ -20,9 +23,17 @@ struct AutophagyRing: View {
     private var rLabel: CGFloat { box * 230 / 460 } // 标签所在半径
 
     private func pos(_ i: Int, radius: CGFloat) -> CGPoint {
-        let a = Double(-90 + 72 * i) * .pi / 180
+        let a = (-90 + 360 * nodeFractions[i]) * .pi / 180
         return CGPoint(x: center + CGFloat(cos(a)) * radius,
                        y: center + CGFloat(sin(a)) * radius)
+    }
+
+    /// 短阶段的标签会贴近下一个节点(如「苏醒」与顶部「觅食」);与下一节点
+    /// 角距 <20° 时该标签外推一档,避免重叠(18:6 / 20:4 档尤其需要)。
+    private func labelRadius(_ i: Int) -> CGFloat {
+        let next = nodeFractions[(i + 1) % nodeFractions.count]
+        let gap = (next - nodeFractions[i] + 1).truncatingRemainder(dividingBy: 1) * 360
+        return gap < 20 ? rLabel + 22 * k : rLabel
     }
 
     var body: some View {
@@ -47,7 +58,7 @@ struct AutophagyRing: View {
                 let i = p.rawValue
                 let on = i == activeIndex
                 let np = pos(i, radius: rNode)
-                let lp = pos(i, radius: rLabel)
+                let lp = pos(i, radius: labelRadius(i))
 
                 Circle().fill(p.color).opacity(on ? 0.18 : 0)
                     .frame(width: 24 * k, height: 24 * k)

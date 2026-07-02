@@ -13,7 +13,7 @@ struct LiveLockScreenView: View {
     var body: some View {
         VStack(spacing: 8) {
             HStack {
-                Image(systemName: "moon.zzz.fill")
+                Image(systemName: phase.symbol)
                     .resizable().scaledToFit().frame(width: 18, height: 18)
                     .foregroundStyle(tint)
                 Text(fasting ? "断食中" : "进食中")

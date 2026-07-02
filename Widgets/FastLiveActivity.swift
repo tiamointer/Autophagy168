@@ -17,7 +17,7 @@ struct FastLiveActivity: Widget {
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(spacing: 4) {
-                        Image(systemName: "moon.zzz.fill")
+                        Image(systemName: context.state.phase.symbol)
                             .resizable().scaledToFit().frame(width: 16, height: 16)
                         Text(fasting ? "断食" : "进食")
                     }
@@ -36,7 +36,7 @@ struct FastLiveActivity: Widget {
                     .tint(tint)
                 }
             } compactLeading: {
-                Image(systemName: "moon.zzz.fill")
+                Image(systemName: context.state.phase.symbol)
                     .resizable().scaledToFit().frame(width: 20, height: 20)
                     .foregroundStyle(tint)
             } compactTrailing: {
@@ -46,7 +46,7 @@ struct FastLiveActivity: Widget {
                     .tint(tint)
                     .frame(width: 22)
             } minimal: {
-                Image(systemName: "moon.zzz.fill")
+                Image(systemName: context.state.phase.symbol)
                     .resizable().scaledToFit().frame(width: 20, height: 20)
                     .foregroundStyle(tint)
             }

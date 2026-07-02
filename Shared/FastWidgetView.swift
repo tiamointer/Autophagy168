@@ -29,7 +29,7 @@ struct FastWidgetView: View {
     private var tint: Color { fasting ? .orange : .green }
 
     private func glyph(_ size: CGFloat) -> some View {
-        Image(systemName: "moon.zzz.fill")
+        Image(systemName: entry.phase.symbol)
             .resizable().scaledToFit().frame(width: size, height: size)
     }
 

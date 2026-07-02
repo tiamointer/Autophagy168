@@ -54,6 +54,18 @@ enum LoopStage: Int, CaseIterable, Identifiable {
     static let targetCenter: CGFloat = 0.5
     static let targetFeet:   CGFloat = 0.8375   // = 268 / 320
 
+    /// 五个阶段在 24h 循环中的起始比例(0..1,循环从进食开始)——环上节点按真实
+    /// 时长摆放、弧匀速走,弧长与时间严格成正比。断食内切点与 MascotView 的
+    /// stage 映射保持一致:12% / 50% / 90%。
+    static func cycleFractions(eatHours: Double) -> [Double] {
+        let fastHours = 24 - eatHours
+        return [0,
+                eatHours / 24,
+                (eatHours + 0.12 * fastHours) / 24,
+                (eatHours + 0.50 * fastHours) / 24,
+                (eatHours + 0.90 * fastHours) / 24]
+    }
+
     // 脚部锚点 —— 在原始 1254×1254 矢量画布中的归一化坐标。
     // 校准与呼吸的所有缩放/旋转都绕这一点进行(等价于 CSS 的 transform-origin)。
     var anchor: UnitPoint {

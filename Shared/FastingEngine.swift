@@ -1,6 +1,11 @@
 import Foundation
 
-enum Phase: Int { case fasting = 0, eating = 1 }
+enum Phase: Int {
+    case fasting = 0, eating = 1
+
+    /// SF Symbol for widgets / Live Activity / lock screen — 断食睡月亮，进食亮刀叉。
+    var symbol: String { self == .fasting ? "moon.zzz.fill" : "fork.knife" }
+}
 
 struct WindowState {
     var phase: Phase
