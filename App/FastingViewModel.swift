@@ -27,6 +27,11 @@ final class FastingViewModel {
 
     func tick() { refresh(now: Date(), force: false) }
 
+    /// Call on return to foreground. Live Activities can only be REQUESTED while the
+    /// app is frontmost — a sync that failed in the background (or was dropped on
+    /// suspension) heals itself here by forcing the side-effect pass.
+    func foregroundRefresh() { refresh(now: Date(), force: true) }
+
     /// One-tap: start a fast now, or end the running one. Each tap re-anchors today's cycle.
     func toggle() {
         guard let ctx = context else { return }

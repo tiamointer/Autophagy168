@@ -39,7 +39,7 @@ struct ContentView: View {
         }
         .onAppear { vm.bind(context) }
         .onReceive(tick) { now = $0; vm.tick() }
-        .onChange(of: scenePhase) { _, p in if p == .active { vm.tick() } }
+        .onChange(of: scenePhase) { _, p in if p == .active { vm.foregroundRefresh() } }
         .sheet(isPresented: $showSettings) {
             ScheduleSheet(schedule: vm.schedule, onPick: { vm.setSchedule($0) },
                           mascotStyle: mascotStyle, onPickStyle: { mascotStyle = $0; $0.save() },
